@@ -26,3 +26,37 @@ vector[1] #mostra apenas o elemento na posição 1
 ## [1] 0.0
 vector[2] #apenas o elemento na posição 2
 ## [1] 5.5
+
+# agora, precisamos definir o luygar onde o R vai levar nosso DB :
+setwd("C:/Users/CarlosViniMSouza/Documents/Programacao/Programacao_R/R_Code/Pesquisa-Pessoal")
+getwd()
+
+# agora, precisamos da biblioteca dplyr :
+install.packages("dplyr")
+library(dplyr)
+
+# e então, pegamos noss db iris :
+iris <- read_csv("Iris.csv")
+iris
+
+# Primeiro vamos explorar a função : select()
+# Nosso objetivo é apenas selecionar algumas colunas
+iris.species <- iris %>% select(Sepal.Length, Petal.Length, Species)
+iris.species
+
+# Segundo, vamos testar o filter()
+# selecionaremos linhas e colunas :
+iris.setosa <- iris %>%
+select(Sepal.Length, Petal.Length, Species) %>%
+filter(Species == 'setosa') %>%
+distinct()
+iris.setosa
+
+# Terceiro e ultimo metodo de filtragem, o mutate()
+# Para criar novos campos, podemos usar omutate:
+iris.flor <- iris %>%
+    select(Sepal.Length, Petal.Length, Species) %>%
+    filter(Species == 'setosa') %>%
+    mutate(Species == 'flor') %>%
+    distinct()
+iris.flor
