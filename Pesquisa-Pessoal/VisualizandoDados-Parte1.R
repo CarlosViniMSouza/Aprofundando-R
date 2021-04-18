@@ -13,5 +13,4 @@ libray(tidyverse)
 graph <- ggplot(iris, aes(y = Petal.Width, x = Species)) +
         geom_point()
 graph
-
 # assim se inicia um gráfico com ggplot (bem básico !)
